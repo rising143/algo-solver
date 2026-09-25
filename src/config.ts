@@ -7,7 +7,7 @@ export function getConfig(): SolverConfig {
     apiBaseUrl: cfg.get<string>('apiBaseUrl', 'https://api.deepseek.com/v1'),
     apiKey: cfg.get<string>('apiKey', ''),
     model: cfg.get<string>('model', 'deepseek-chat'),
-    language: cfg.get<string>('language', 'cpp'),
+    language: cfg.get<string>('language', 'python'),
     charDelayMs: cfg.get<number>('charDelayMs', 15),
     stepDelayMs: cfg.get<number>('stepDelayMs', 120),
     requestTimeoutMs: cfg.get<number>('requestTimeoutMs', 180000),

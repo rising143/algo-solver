@@ -21,10 +21,10 @@ VS Code 插件：快捷键触发，调用云端大模型读取当前文件中的
 | `algoSolver.apiBaseUrl` | `https://api.deepseek.com/v1` | OpenAI 兼容接口地址 |
 | `algoSolver.apiKey` | `""` | API Key（必填） |
 | `algoSolver.model` | `deepseek-chat` | 模型名 |
-| `algoSolver.language` | `cpp` | 解题语言 |
+| `algoSolver.language` | `python` | 解题语言 |
 | `algoSolver.charDelayMs` | `15` | 每字符插入间隔 |
 | `algoSolver.stepDelayMs` | `120` | 步间停顿 |
-| `algoSolver.requestTimeoutMs` | `60000` | 请求超时 |
+| `algoSolver.requestTimeoutMs` | `180000` | 请求超时 |
 | `algoSolver.temperature` | `0.2` | 采样温度 |
 
 ## 使用
