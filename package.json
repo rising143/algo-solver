@@ -1,0 +1,107 @@
+{
+  "name": "algo-solver",
+  "displayName": "Algo Solver",
+  "publisher": "local",
+  "description": "快捷键触发，调用云端大模型读取当前算法题，输出运行最快的纯代码答案，按人类书写顺序像真人输入一样插入光标处。",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "algoSolver.solve",
+        "title": "Algo Solver: 解题并像真人一样输入"
+      },
+      {
+        "command": "algoSolver.cancel",
+        "title": "Algo Solver: 中断当前输入"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "algoSolver.solve",
+        "key": "ctrl+alt+s",
+        "mac": "cmd+alt+s"
+      },
+      {
+        "command": "algoSolver.cancel",
+        "key": "escape",
+        "when": "algoSolver.isRunning"
+      }
+    ],
+    "configuration": {
+      "title": "Algo Solver",
+      "properties": {
+        "algoSolver.apiBaseUrl": {
+          "type": "string",
+          "default": "https://api.deepseek.com/v1",
+          "description": "OpenAI 兼容接口地址（默认 DeepSeek）"
+        },
+        "algoSolver.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "API Key",
+          "scope": "machine"
+        },
+        "algoSolver.model": {
+          "type": "string",
+          "default": "deepseek-chat",
+          "description": "模型名"
+        },
+        "algoSolver.language": {
+          "type": "string",
+          "default": "python",
+          "enum": [
+            "cpp",
+            "python",
+            "java",
+            "c",
+            "go",
+            "rust",
+            "javascript",
+            "typescript"
+          ],
+          "description": "解题使用的编程语言"
+        },
+        "algoSolver.charDelayMs": {
+          "type": "number",
+          "default": 15,
+          "description": "每字符插入间隔（毫秒），0 则每步瞬间插入"
+        },
+        "algoSolver.stepDelayMs": {
+          "type": "number",
+          "default": 120,
+          "description": "步间停顿（毫秒）"
+        },
+        "algoSolver.requestTimeoutMs": {
+          "type": "number",
+          "default": 180000,
+          "description": "请求超时（毫秒）。推理模型如 deepseek-v4-pro 可能需要 120 秒以上，建议设 180000"
+        },
+        "algoSolver.temperature": {
+          "type": "number",
+          "default": 0.2,
+          "description": "采样温度，低值求稳定结构化输出"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.0",
+    "@vscode/vsce": "^2.22.0"
+  }
+}
